@@ -1,0 +1,8 @@
+.app {
+  min-height: 100vh;
+}
+
+.container {
+  margin: 50vh auto 0;
+  transform: translateY(-50%);
+}
