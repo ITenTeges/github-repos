@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.ui.relaxed.list > .item {
+  display: flex;
+  flex-direction: row;
+}
+
+.ui.basic.image.label {
+  display: contents;
+  line-height: 20px;
+}
+
+.ui.basic.image.label>.icon {
+  margin-left: 4px !important;
+  margin-right: 0 !important;
+}
+
+.ui.fluid.accordion {
+  margin-top: 8px;
+}
+
+.ui.primary.button {
+  margin-top: 8px;
+}
