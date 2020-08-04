@@ -1,8 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c5b74d04-07c7-4559-9086-0d65a9b60cea/deploy-status)](https://app.netlify.com/sites/github-user-repos/deploys)
 
-## Github user repos app
+# Github user repos app
 
----
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
