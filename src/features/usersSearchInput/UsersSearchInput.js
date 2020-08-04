@@ -9,7 +9,7 @@ const UserSearchInput = () => {
   const dispatch = useDispatch()
   return <Form>
     <Input focus placeholder='Search github users' fluid value={value} onChange={(e, { value }) => { setValue(value) }} />
-    <Button loading={isLoading} primary fluid onClick={async () => {
+    <Button loading={isLoading} primary disabled={value === ''} fluid onClick={async () => {
       setIsLoading(true)
       await dispatch(getUser(value))
       setIsLoading(false)
