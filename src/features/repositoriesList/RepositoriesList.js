@@ -43,13 +43,13 @@ class RepositoriesList extends Component {
       <Accordion.Content active={activeIndex === index}>
         <List divided relaxed>
         {loading && <Segment>
-      <Dimmer active inverted>
-        <Loader size='small'>Loading</Loader>
-      </Dimmer>
+          <Dimmer active inverted>
+            <Loader size='small'>Loading</Loader>
+          </Dimmer>
 
-      <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-    </Segment>}
-        {!loading && repositories.map((repo, i) => <List.Item key={repo.url} as="a" href={repo.url}>
+          <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+        </Segment>}
+        {!loading && repositories.length > 0 && repositories.map(repo => <List.Item key={repo.url} as="a" href={repo.url}>
             <List.Icon name='github' size='large' verticalAlign='middle' />
             <List.Content>
               <List.Header>{repo.title}</List.Header>
@@ -61,6 +61,7 @@ class RepositoriesList extends Component {
             </Label>
           </List.Item>
         )}
+        {!loading && repositories.length === 0 && <List.Item>No repositories</List.Item>}
         </List>
       </Accordion.Content>
     </Accordion>
