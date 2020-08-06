@@ -23,15 +23,41 @@ class RepositoriesList extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate = (prevProps, prevState) => {
     if (!equal(prevState.activeIndex, this.state.lastOpened)) {
       this.setState({ loading: false, lastOpened: this.state.activeIndex })
     }
   }
-  render() {
-    const { activeIndex, loading } = this.state
-    const { users, repositories } = this.props
 
+  renderRepositories = () => {
+    const { loading } = this.state
+    const { repositories } = this.props
+    const shouldRenderRepositories = !loading && repositories.length > 0
+    const shouldRenderEmpty = !loading && repositories.length === 0
+    if (shouldRenderRepositories) {
+      return repositories.map(repo => <List.Item key={repo.url} as="a" href={repo.url}>
+        <List.Icon name='github' size='large' verticalAlign='middle' />
+        <List.Content>
+          <List.Header>{repo.title}</List.Header>
+          <List.Description>{repo.description}</List.Description>
+        </List.Content>
+        <Label basic image>
+          {repo.stars}
+          <Icon name="star"/>
+        </Label>
+      </List.Item>
+    )}
+    if (shouldRenderEmpty) {
+      return <List.Item>No repositories</List.Item>
+    }
+
+    return null
+  }
+
+  render = () => {
+    const { activeIndex, loading } = this.state
+    const { users } = this.props
+    
     return users.map((user, index) => <Accordion fluid styled key={user.username}>
       <Accordion.Title
         active={activeIndex === index}
@@ -49,19 +75,7 @@ class RepositoriesList extends Component {
 
           <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
         </Segment>}
-        {!loading && repositories.length > 0 && repositories.map(repo => <List.Item key={repo.url} as="a" href={repo.url}>
-            <List.Icon name='github' size='large' verticalAlign='middle' />
-            <List.Content>
-              <List.Header>{repo.title}</List.Header>
-              <List.Description>{repo.description}</List.Description>
-            </List.Content>
-            <Label basic image>
-              {repo.stars}
-              <Icon name="star"/>
-            </Label>
-          </List.Item>
-        )}
-        {!loading && repositories.length === 0 && <List.Item>No repositories</List.Item>}
+        {this.renderRepositories()}
         </List>
       </Accordion.Content>
     </Accordion>

@@ -1,6 +1,6 @@
 import React from 'react';
-import UsersList from './features/repositoriesList/RepositoriesList';
-import UsersSearchInput from './features/usersSearchInput/UsersSearchInput';
+import UsersList from './containers/repositoriesList/RepositoriesList';
+import UsersSearchInput from './components/usersSearchInput/UsersSearchInput';
 import styles from './App.module.css';
 import { Container } from 'semantic-ui-react';
 
